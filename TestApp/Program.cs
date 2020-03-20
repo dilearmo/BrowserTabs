@@ -16,14 +16,14 @@ namespace TestApp
 
             //AllTogether.PrintBrowserTabName();
 
-            BrowserTabs.BrowserTabs bt = new BrowserTabs.BrowserTabs();
-           // BrowserTabs_v1.otro();
-            BrowserTabs_v1 btv1 = new BrowserTabs_v1();
+            //BrowserTabs.BrowserTabs bt = new BrowserTabs.BrowserTabs();
+            // BrowserTabs_v1.otro();
+            //BrowserTabsFirefox btv1 = new BrowserTabsFirefox();
 
-            var res = btv1.ListTabsFromAllWindows(BrowserProcessName.GoogleChrome);
+            //BrowserTabsChrome btv1 = new BrowserTabsChrome();
 
-            bt.ListAllTabs();
-            bt.getAllRunningIEURLs();
+            var res = BrowserUtilities.ListTabs(BrowserProcessName.GoogleChrome);
+            var res2 = BrowserUtilities.ListTabs(BrowserProcessName.Firefox);
 
             Console.Read();
         }

@@ -64,10 +64,12 @@
     <Compile Include="V1\AllTogether.cs" />
     <Compile Include="V1\BrowserProcessName.cs" />
     <Compile Include="V1\BrowserTab.cs" />
-    <Compile Include="V1\BrowserTabsChrome.cs" />
+    <Compile Include="V1\Browser_Firefox.cs" />
+    <Compile Include="V1\Browser_Chrome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="V1\BrowserUtilities.cs" />
     <Compile Include="V1\BrowserWindow.cs" />
-    <Compile Include="V1\IBrowserTabs.cs" />
+    <Compile Include="V1\IBrowser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

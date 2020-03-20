@@ -11,4 +11,3 @@ C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.cspro
 C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.csproj.CopyComplete
 C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.dll
 C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.pdb
-C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.csprojAssemblyReference.cache

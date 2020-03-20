@@ -9,8 +9,10 @@ using System.Windows.Automation;
 
 namespace V1.BrowserTabs
 {
-    public class BrowserTabs_v1
+    class Browser_Chrome : IBrowser
     {
+        private string processName = BrowserProcessName.GoogleChrome;
+
         public delegate bool EnumWindowsProc(IntPtr hWnd, int lParam);
         [DllImport("user32.dll")]
         private static extern bool EnumDesktopWindows(IntPtr hDesktop, EnumWindowsProc ewp, int lParam);
@@ -27,7 +29,7 @@ namespace V1.BrowserTabs
         [DllImport("user32.dll")]
         static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        public List<BrowserWindow> ListTabsFromAllWindows(string processName)
+        public List<BrowserWindow> ListTabsFromAllWindows()
         {
             List<BrowserWindow> result = new List<BrowserWindow>();
 
@@ -68,12 +70,13 @@ namespace V1.BrowserTabs
             foreach (IntPtr ptr in windowHandles)
             {
                 AutomationElement root = AutomationElement.FromHandle(ptr);
-                List<BrowserTab> tabs = ListTabs(root);
+                Process rootProcess = Process.GetProcessById(root.Current.ProcessId);
+                List<BrowserTab> tabs = ListTabs(root, rootProcess, root.Current.Name);
                 BrowserWindow window = new BrowserWindow
                 {
                     CurrentTab = tabs?.Where((x) => x.IsCurrentTab)?.FirstOrDefault(),
                     Tabs = tabs,
-                    IsMinimized = false // falta setearlo bien
+                    IsMinimized = tabs.Count == 0 // falta setearlo bien
                 };
 
                 result.Add(window);
@@ -82,14 +85,16 @@ namespace V1.BrowserTabs
             return result;
         }
 
-        private List<BrowserTab> ListTabs(AutomationElement root)
+        protected List<BrowserTab> ListTabs(AutomationElement root, Process process, string windowName)
         {
             List<BrowserTab> result = new List<BrowserTab>();
             Condition condition = new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.TabItem);
             var tabs = root.FindAll(TreeScope.Descendants, condition);
 
             Console.WriteLine($"Active tab: {root.Current.Name}");
-            var elmUrlBar = root.FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
+            //var elmUrlBar = root.FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
+
+            //var buttons = root.FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
 
             foreach (AutomationElement tabitem in tabs)
             {
@@ -98,8 +103,8 @@ namespace V1.BrowserTabs
                 BrowserTab tab = new BrowserTab
                 {
                     Name = tabitem.Current.Name,
-                    Url = "",
-                    IsCurrentTab = tabitem.Current.IsEnabled // falta setearlo bien
+                    Url = windowName.Contains(tabitem.Current.Name) ? FindWindowUrl(process) : string.Empty,
+                    IsCurrentTab = windowName.Contains(tabitem.Current.Name)
                 };
 
                 result.Add(tab);
@@ -110,28 +115,23 @@ namespace V1.BrowserTabs
 
 
 
-        public static void otro()
+        protected string FindWindowUrl(Process process)
         {
-            Process[] procsChrome = Process.GetProcessesByName("chrome");
-            foreach (Process chrome in procsChrome)
+            AutomationElement element = AutomationElement.FromHandle(process.MainWindowHandle);
+            if (element != null)
             {
-                if (chrome.MainWindowHandle == IntPtr.Zero)
-                    continue;
+                Condition conditions = new AndCondition(
+                    new PropertyCondition(AutomationElement.ProcessIdProperty, process.Id),
+                    new PropertyCondition(AutomationElement.IsControlElementProperty, true),
+                    new PropertyCondition(AutomationElement.IsContentElementProperty, true),
+                    new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
 
-                AutomationElement element = AutomationElement.FromHandle(chrome.MainWindowHandle);
-                if (element != null)
-                {
-                    Condition conditions = new AndCondition(
-                        new PropertyCondition(AutomationElement.ProcessIdProperty, chrome.Id),
-                        new PropertyCondition(AutomationElement.IsControlElementProperty, true),
-                        new PropertyCondition(AutomationElement.IsContentElementProperty, true),
-                        new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
-
-                    AutomationElement elementx = element.FindFirst(TreeScope.Descendants, conditions);
-                    var res = ((ValuePattern)elementx.GetCurrentPattern(ValuePattern.Pattern)).Current.Value as string;
-                    Console.WriteLine(res);
-                }
+                AutomationElement elementx = element.FindFirst(TreeScope.Descendants, conditions);
+                var res = ((ValuePattern)elementx.GetCurrentPattern(ValuePattern.Pattern)).Current.Value as string;
+                return res;
             }
+
+            return string.Empty;
         }
     }
 }
