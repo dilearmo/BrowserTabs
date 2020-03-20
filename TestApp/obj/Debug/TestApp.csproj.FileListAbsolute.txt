@@ -1,0 +1,10 @@
+C:\Users\darias\source\repos\BrowserTabs\TestApp\bin\Debug\TestApp.exe.config
+C:\Users\darias\source\repos\BrowserTabs\TestApp\bin\Debug\TestApp.exe
+C:\Users\darias\source\repos\BrowserTabs\TestApp\bin\Debug\TestApp.pdb
+C:\Users\darias\source\repos\BrowserTabs\TestApp\bin\Debug\BrowserTabs.dll
+C:\Users\darias\source\repos\BrowserTabs\TestApp\bin\Debug\BrowserTabs.pdb
+C:\Users\darias\source\repos\BrowserTabs\TestApp\obj\Debug\TestApp.csprojAssemblyReference.cache
+C:\Users\darias\source\repos\BrowserTabs\TestApp\obj\Debug\TestApp.csproj.CoreCompileInputs.cache
+C:\Users\darias\source\repos\BrowserTabs\TestApp\obj\Debug\TestApp.csproj.CopyComplete
+C:\Users\darias\source\repos\BrowserTabs\TestApp\obj\Debug\TestApp.exe
+C:\Users\darias\source\repos\BrowserTabs\TestApp\obj\Debug\TestApp.pdb

@@ -1,0 +1,14 @@
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\bin\Debug\BrowserTabs.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\bin\Debug\BrowserTabs.pdb
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\bin\Debug\PresentationCore.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\bin\Debug\PresentationFramework.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\bin\Debug\System.Design.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\bin\Debug\System.Xaml.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\bin\Debug\WindowsBase.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\Interop.SHDocVw.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.csproj.ResolveComReference.cache
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.csproj.CoreCompileInputs.cache
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.csproj.CopyComplete
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.dll
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.pdb
+C:\Users\darias\source\repos\BrowserTabs\BrowserTabs\obj\Debug\BrowserTabs.csprojAssemblyReference.cache
