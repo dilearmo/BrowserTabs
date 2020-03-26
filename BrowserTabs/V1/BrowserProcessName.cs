@@ -1,10 +1,10 @@
 ﻿namespace BrowserTabs.V1
 {
-    public struct BrowserProcessName
+    public class BrowserProcessName
     {
-        public const string GoogleChrome = "chrome";
-        public const string Firefox = "firefox";
-        public const string InternetExplorer = "internetexplorer";
-        public const string Opera = "opera";
+        public static readonly string GoogleChrome = "chrome";
+        public static readonly string Firefox = "firefox";
+        public static readonly string InternetExplorer = "internetexplorer";
+        public static readonly string Opera = "opera";
     }
 }
